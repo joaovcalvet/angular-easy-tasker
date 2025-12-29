@@ -1,7 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { DUMMY_USERS } from '../../../dummy-users';
-
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 interface User {
 	id: string;
@@ -19,13 +16,15 @@ interface User {
 export class UserComponent {
 	@Input()
 	public user!: User;
-	public selectedUser = DUMMY_USERS[randomIndex];
+
+	@Output()
+	public selectUser = new EventEmitter<string>();
 
 	public get imagePath(): string {
-		return `users/${this.selectedUser.avatar}`;
+		return `users/${this.user.avatar}`;
 	}
 
 	public onSelectUser(): void {
-		this.selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)];
+		this.selectUser.emit(this.user.id);
 	}
 }

@@ -3,7 +3,7 @@
 <main>
   <ul id="users">
     <li>
-      <app-user [user]="users[0]" />
+      <app-user [user]="users[0]" (selectUser)="onUserSelected($event)" />
     </li>
   </ul>
 </main>

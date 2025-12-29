@@ -15,4 +15,8 @@ import { DUMMY_USERS } from './dummy-users';
 export class App {
   protected readonly title = signal('first-angular-app');
   protected readonly users = DUMMY_USERS;
+
+  protected onUserSelected(userId: string): void {
+    console.log(`Selected user: ${userId}`);
+  }
 }

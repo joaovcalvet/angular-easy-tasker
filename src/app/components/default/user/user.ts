@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 
 interface User {
 	id: string;
@@ -15,7 +15,10 @@ interface User {
 })
 export class UserComponent {
 	public user = input.required<User>();
+	public selectUser = output<string>();
 
 	protected imagePath = computed(() => `users/${this.user().avatar}`);
-	protected onSelectUser(): void { }
+	protected onSelectUser(): void {
+		this.selectUser.emit(this.user().id);
+	}
 }
