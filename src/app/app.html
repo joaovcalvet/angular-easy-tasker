@@ -6,6 +6,8 @@
       <app-user [user]="users[0]" (selectUser)="onUserSelected($event)" />
     </li>
   </ul>
+
+  <app-tasks [user]="selectedUser()" />
 </main>
 
 <router-outlet />
