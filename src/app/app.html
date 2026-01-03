@@ -11,7 +11,7 @@
 
   @let user = selectedUser();
   @if (user) {
-    <app-tasks [user]="user" />
+    <app-tasks [user]="user" [tasks]="selectedTasks()" />
   } @else {
     <p>No user selected</p>
   }
