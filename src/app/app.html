@@ -2,12 +2,19 @@
 
 <main>
   <ul id="users">
-    <li>
-      <app-user [user]="users[0]" (selectUser)="onUserSelected($event)" />
-    </li>
+    @for (user of users; track user.id) {
+      <li>
+        <app-user [user]="user" (selectUser)="onUserSelected($event)" />
+      </li>
+    }
   </ul>
 
-  <app-tasks [user]="selectedUser()" />
+  @let user = selectedUser();
+  @if (user) {
+    <app-tasks [user]="user" />
+  } @else {
+    <p>No user selected</p>
+  }
 </main>
 
 <router-outlet />

@@ -8,5 +8,5 @@ import { User } from '../../../types/user';
   styleUrl: './tasks.css',
 })
 export class TasksComponent {
-  public readonly user = input.required<User | undefined>();
+  public readonly user = input.required<User>();
 }
