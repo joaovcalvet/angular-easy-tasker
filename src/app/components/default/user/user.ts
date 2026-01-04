@@ -9,10 +9,17 @@ import { User } from '../../../models/user';
 	styleUrl: './user.css',
 })
 export class UserComponent {
+	//inputs
 	public user = input.required<User>();
+	public selected = input.required<boolean>();
+
+	//outputs
 	public selectUser = output<string>();
 
+	//computed
 	protected imagePath = computed(() => `users/${this.user().avatar}`);
+
+	//methods
 	protected onSelectUser(): void {
 		this.selectUser.emit(this.user().id);
 	}
