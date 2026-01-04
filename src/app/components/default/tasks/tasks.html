@@ -11,7 +11,7 @@
             @let taskList = tasks();
             @for (task of taskList; track task.id) {
                 <li>
-                    <app-task [task]="task" />
+                    <app-task [task]="task" (complete)="onTaskComplete($event)" />
                 </li>
             }
         } @else {
