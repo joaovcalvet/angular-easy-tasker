@@ -5,8 +5,8 @@ import { HeaderComponent } from './components/legacy/header/header.component';
 import { UserComponent } from './components/default/user/user';
 import { TasksComponent } from './components/default/tasks/tasks';
 
-import { User } from './types/user';
-import { Task } from './types/task';
+import { User } from './models/user';
+import { Task } from './models/task';
 import { DUMMY_USERS } from './dummy-users';
 
 const DUMMY_TASKS: Task[] = [
