@@ -2,9 +2,13 @@
     <header>
         <h2>{{ user().name }}'s Tasks</h2>
         <menu>
-            <button>Add Task</button>
+            <button (click)="onAddTask()">Add Task</button>
         </menu>
     </header>
+
+    @if (isAddingTask()) {
+        <app-new-task-form (addedTask)="addTask($event)" (cancelAddingTask)="onCancelAdd()" />
+    }
 
     <ul>
         @if (hasTasks()) {
