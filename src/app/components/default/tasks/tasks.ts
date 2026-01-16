@@ -3,6 +3,7 @@ import { User } from '../../../models/user';
 import { TaskComponent } from "./task/task";
 import { Task } from '../../../models/task';
 import { NewTaskFormComponent } from "./new-task-form/new-task-form";
+import { NewTaskFormModel } from '../../../models/new-task-form';
 
 const DUMMY_TASKS: Task[] = [
     {
@@ -76,15 +77,13 @@ export class TasksComponent {
     this.allTasks.update(tasks => tasks.filter(task => task.id !== taskId));
   }
 
-  protected addTask(event: Event) {
-    event.preventDefault();
-
+  protected addTask(task: NewTaskFormModel) {
     this.allTasks.update(tasks => [...tasks, {
       id: 't' + (tasks.length + 1),
       userId: this.user().id,
-      title: 'Task ' + (tasks.length + 1),
-      summary: 'Summary ' + (tasks.length + 1),
-      dueDate: new Date(),
+      title: task.title,
+      summary: task.summary,
+      dueDate: task.dueDate,
     }]);
   }
 }

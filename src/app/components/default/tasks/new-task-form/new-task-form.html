@@ -1,18 +1,21 @@
 <form class="add-task-form">
     <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" placeholder="Task title" />
+        <input type="text" id="title" placeholder="Task title" [field]="addTaskForm.title"/>
+        @if(addTaskForm.title().invalid() && addTaskForm().submitting()) {
+            <div class="error">{{ addTaskForm.title().errors()[0].message }}</div>
+        }
     </div>
     <div class="form-group">
         <label for="summary">Summary</label>
-        <textarea id="summary" name="summary" rows="3" placeholder="Task description"></textarea>
+        <textarea id="summary" rows="3" placeholder="Task description" [field]="addTaskForm.summary"></textarea>
     </div>
     <div class="form-group">
         <label for="dueDate">Due Date</label>
-        <input type="date" id="dueDate" name="dueDate" />
+        <input type="date" id="dueDate" [field]="addTaskForm.dueDate"/>
     </div>
     <div class="form-actions">
         <button type="button" class="btn-cancel" (click)="cancelAddingTask.emit()">Cancel</button>
-        <button type="submit" class="btn-add" (click)="addedTask.emit($event)">Add Task</button>
+        <button type="submit" class="btn-add" [disabled]="addTaskForm().invalid()" (click)="createNewTask($event)">Add Task</button>
     </div>
 </form>
